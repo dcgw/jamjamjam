@@ -12,7 +12,7 @@ package net.noiseinstitute.game.enemies {
         [Embed(source='EnemyShot.png')]
         private const ENEMY_SHOT:Class;
 
-        private const SPEED:Number = 10;
+        private const SPEED:Number = 7;
 
         private var _velocity:Point = new Point(0, 0);
 
