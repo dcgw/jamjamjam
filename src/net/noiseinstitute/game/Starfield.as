@@ -16,9 +16,9 @@ package net.noiseinstitute.game {
         [Embed("Star.png")]
         private static const STAR_IMAGE:Class;
 
-        private static const NUM_STARS = 64;
-        private static const MIN_SPEED = 100 / Main.LOGIC_FPS;
-        private static const MAX_SPEED = 400 / Main.LOGIC_FPS;
+        private static const NUM_STARS:int = 64;
+        private static const MIN_SPEED:Number = 100 / Main.LOGIC_FPS;
+        private static const MAX_SPEED:Number = 400 / Main.LOGIC_FPS;
 
         private var palette:Vector.<uint>;
 
