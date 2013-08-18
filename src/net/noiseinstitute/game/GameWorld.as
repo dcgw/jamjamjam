@@ -1,6 +1,6 @@
 package net.noiseinstitute.game {
     import net.flashpunk.World;
-    import net.noiseinstitute.game.enemies.Enemy;
+    import net.noiseinstitute.game.enemies.Grunt;
 
     public class GameWorld extends World {
 
@@ -8,9 +8,9 @@ package net.noiseinstitute.game {
 
         public function GameWorld() {
             _waves.push(Wave.at(50)
-                    .withEnemy(0, Enemy)
-                    .withEnemy(30, Enemy)
-                    .withEnemy(60, Enemy));
+                    .withEnemy(0, Grunt)
+                    .withEnemy(30, Grunt)
+                    .withEnemy(60, Grunt));
         }
 
         override public function update():void {

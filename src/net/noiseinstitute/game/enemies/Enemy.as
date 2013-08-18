@@ -1,5 +1,4 @@
 package net.noiseinstitute.game.enemies {
-    import net.noiseinstitute.game.*;
     import flash.geom.Point;
 
     import net.flashpunk.Entity;
@@ -9,21 +8,14 @@ package net.noiseinstitute.game.enemies {
 
     public class Enemy extends Entity {
 
-        [Embed(source='Enemy.png')]
-        private const ENEMY:Class;
-
         private const SPEED:Number = 3;
-        private const FIRE_INTERVAL:uint = 5;
-        private const VOLLEY_INTERVAL:uint = 50;
-        private const VOLLEY_SIZE:int = 3;
 
-        private var _tick:uint = 0;
+        protected var _tick:uint = 0;
         private var _img:Image;
         private var _velocity:Point = new Point(0, 0);
-        private var _shotsFired:int = 0;
 
-        public function Enemy() {
-            _img = new Image(ENEMY);
+        public function Enemy(img:Class) {
+            _img = new Image(img);
             _img.centerOrigin();
             _img.smooth = true;
             graphic = _img;
@@ -52,14 +44,6 @@ package net.noiseinstitute.game.enemies {
             y += _velocity.y;
 
             _img.angle = VectorMath.angle(_velocity);
-
-            if(_tick % VOLLEY_INTERVAL == 0) {
-                _shotsFired = 0;
-            }
-            if (_tick % FIRE_INTERVAL == 0 && _shotsFired < VOLLEY_SIZE) {
-                ++_shotsFired;
-                fire();
-            }
 
             if (!onCamera) {
                 FP.world.recycle(this);
