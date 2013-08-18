@@ -35,11 +35,8 @@ package net.noiseinstitute.game {
             x = 0;
             y = 0;
 
-            _velocity.x = 1;
-            _velocity.y = 1;
-
-            VectorMath.normalizeInPlace(_velocity);
-            VectorMath.scaleInPlace(_velocity, SPEED);
+            VectorMath.set(_velocity, 1, 1)
+            VectorMath.setMagnitudeInPlace(_velocity, SPEED);
         }
 
         override public function update():void {

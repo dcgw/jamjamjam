@@ -23,13 +23,11 @@ package net.noiseinstitute.game {
             layer = 200;
         }
 
-        public function fire(x:Number, y:Number, direction:Point) {
+        public function fire(x:Number, y:Number, direction:Point):void {
             this.x = x;
             this.y = y;
-            _velocity.x = direction.x;
-            _velocity.y = direction.y;
-            VectorMath.normalizeInPlace(_velocity);
-            VectorMath.scaleInPlace(_velocity, SPEED);
+            VectorMath.copyTo(_velocity, direction);
+            VectorMath.setMagnitudeInPlace(_velocity, SPEED);
         }
 
         override public function update():void {
