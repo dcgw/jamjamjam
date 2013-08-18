@@ -15,12 +15,21 @@ package net.noiseinstitute.game {
         private static const DRAG:Number = 4000 / Main.LOGIC_FPS / Main.LOGIC_FPS;
         private static const MAX_SPEED:Number = 500 / Main.LOGIC_FPS;
 
+        private static const MIN_SCALE:Number = 0.8;
+        private static const MAX_SCALE:Number = 1;
+        private static const SCALE_SMOOTHING_FACTOR:Number = 0.2;
+
+        private var image:Image;
+        private var scaleX:Number = 1;
+        private var scaleY:Number = 1;
+
         private var input:Point = new Point;
         private var velocity:Point = new Point;
 
         public function Player() {
-            var image:Image = new Image(PLAYER_IMAGE);
+            image = new Image(PLAYER_IMAGE);
             image.centerOrigin();
+            image.smooth = true;
             graphic = image;
         }
 
@@ -73,6 +82,14 @@ package net.noiseinstitute.game {
 
             x += velocity.x;
             y += velocity.y;
+
+            var scaleTargetX:Number = MIN_SCALE + Math.abs(velocity.x) * (MAX_SCALE - MIN_SCALE) / MAX_SPEED;
+            var scaleTargetY:Number = MIN_SCALE + Math.abs(velocity.y) * (MAX_SCALE - MIN_SCALE) / MAX_SPEED;
+            scaleX = scaleTargetX * SCALE_SMOOTHING_FACTOR + scaleX * (1 - SCALE_SMOOTHING_FACTOR);
+            scaleY = scaleTargetY * SCALE_SMOOTHING_FACTOR + scaleY * (1 - SCALE_SMOOTHING_FACTOR);
+
+            image.scaleX = scaleX;
+            image.scaleY = scaleY;
         }
     }
 }
