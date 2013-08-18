@@ -11,9 +11,11 @@ package net.noiseinstitute.game {
             addGraphic(new Starfield);
 
             _waves.push(Wave.at(50)
-                    .withEnemy(0, Grunt)
+                    .withEnemy(0, Grunt, {left: true})
+                    .withEnemy(0, Grunt, {left: false})
                     .withEnemy(30, Gunner)
-                    .withEnemy(60, Grunt));
+                    .withEnemy(60, Grunt, {left: true})
+                    .withEnemy(60, Grunt, {left: false}));
         }
 
         override public function update():void {

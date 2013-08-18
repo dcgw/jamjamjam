@@ -17,8 +17,10 @@ package net.noiseinstitute.game.enemies {
             _img.centerOrigin();
             _img.smooth = true;
             graphic = _img;
-            layer = 101;
+            layer = 100;
         }
+
+        public function spawn(params:Object):void {}
 
         public function fire(direction:Point):void {
             var shot:EnemyShot = FP.world.create(EnemyShot) as EnemyShot;

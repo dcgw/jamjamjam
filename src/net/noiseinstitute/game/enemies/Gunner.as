@@ -13,7 +13,6 @@ package net.noiseinstitute.game.enemies {
         private const VOLLEY_SIZE:int = 15;
         private const SPEED:Number = 1.5;
 
-
         private var _shotsFired:int = 0;
         private var _fireDirection:Point = new Point();
 
@@ -21,7 +20,7 @@ package net.noiseinstitute.game.enemies {
             super(GUNNER);
         }
 
-        override public function added():void {
+        override public function spawn(params:Object):void {
             x = 320;
             y = 0;
 

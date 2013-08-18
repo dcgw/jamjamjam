@@ -1,5 +1,6 @@
 package net.noiseinstitute.game {
     import net.flashpunk.FP;
+    import net.noiseinstitute.game.enemies.Enemy;
 
     public class Wave {
 
@@ -16,10 +17,11 @@ package net.noiseinstitute.game {
             return new Wave(tick);
         }
 
-        public function withEnemy(tick:uint, enemy:Class):Wave {
+        public function withEnemy(tick:uint, enemy:Class, params:Object = null):Wave {
             _enemies.push({
                 tick: tick,
-                enemy: enemy
+                enemy: enemy,
+                params: params
             });
 
             return this;
@@ -28,8 +30,9 @@ package net.noiseinstitute.game {
         public function update():void {
             ++_tick;
 
-            if(_index < _enemies.length && _tick == (_startTick + _enemies[_index].tick)) {
-                FP.world.create(_enemies[_index].enemy);
+            while(_index < _enemies.length && _tick == (_startTick + _enemies[_index].tick)) {
+                var enemy:Enemy  = FP.world.create(_enemies[_index].enemy) as Enemy;
+                enemy.spawn(_enemies[_index].params);
                 ++_index;
             }
         }

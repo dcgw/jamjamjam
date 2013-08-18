@@ -12,22 +12,25 @@ package net.noiseinstitute.game.enemies {
         private const SPEED:Number = 3;
 
         private var _shotsFired:int = 0;
+        private var _turnRate:int = 0;
 
         public function Grunt() {
             super(GRUNT);
         }
 
-        override public function added():void {
-            x = 0;
+        override public function spawn(params:Object):void {
+            x = params.left ? 0 : 640;
             y = 30;
 
-            VectorMath.becomePolar(_velocity, 200, SPEED);
+            _turnRate = params.left ? 0.2 : -0.2;
+
+            VectorMath.becomePolar(_velocity, params.left ? 200 : 160, SPEED);
         }
 
         override public function update():void {
             super.update();
 
-            VectorMath.rotateInPlace(_velocity, 0.2);
+            VectorMath.rotateInPlace(_velocity, _turnRate);
 
             if(_tick % VOLLEY_INTERVAL == 0) {
                 _shotsFired = 0;
