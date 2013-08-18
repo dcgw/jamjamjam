@@ -31,7 +31,7 @@ package net.noiseinstitute.game.enemies {
             x = 0;
             y = 0;
 
-            VectorMath.set(_velocity, 1, 1)
+            VectorMath.set(_velocity, 1, 1);
             VectorMath.setMagnitudeInPlace(_velocity, SPEED);
         }
 

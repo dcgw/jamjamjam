@@ -35,7 +35,7 @@ package net.noiseinstitute.game.enemies {
             if (_tick % FIRE_INTERVAL == 0) {
                 VectorMath.rotateInPlace(_fireDirection, 5);
 
-                for(var i = 0; i <= 6; i++) {
+                for(var i:int = 0; i <= 6; i++) {
                     VectorMath.rotateInPlace(_fireDirection, 60);
                     fire(_fireDirection);
                 }
