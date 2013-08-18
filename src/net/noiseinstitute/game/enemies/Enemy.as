@@ -8,8 +8,6 @@ package net.noiseinstitute.game.enemies {
 
     public class Enemy extends Entity {
 
-        private const SPEED:Number = 3;
-
         protected var _tick:uint = 0;
         private var _img:Image;
         protected var _velocity:Point = new Point(0, 0);
@@ -25,14 +23,6 @@ package net.noiseinstitute.game.enemies {
         public function fire(direction:Point):void {
             var shot:EnemyShot = FP.world.create(EnemyShot) as EnemyShot;
             shot.fire(x, y, direction);
-        }
-
-        override public function added():void {
-            x = 0;
-            y = 0;
-
-            VectorMath.set(_velocity, 1, 1);
-            VectorMath.setMagnitudeInPlace(_velocity, SPEED);
         }
 
         override public function update():void {

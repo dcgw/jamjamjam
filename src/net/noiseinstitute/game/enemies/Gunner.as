@@ -9,6 +9,7 @@ package net.noiseinstitute.game.enemies {
         private const GUNNER:Class;
 
         private const FIRE_INTERVAL:uint = 3;
+        private const SPEED:Number = 2;
 
         private var _fireDirection:Point = new Point();
 
@@ -17,7 +18,10 @@ package net.noiseinstitute.game.enemies {
         }
 
         override public function added():void {
-            super.added();
+            x = 320;
+            y = 0;
+
+            VectorMath.set(_velocity, 0, SPEED);
 
             VectorMath.copyTo(_fireDirection, _velocity);
         }

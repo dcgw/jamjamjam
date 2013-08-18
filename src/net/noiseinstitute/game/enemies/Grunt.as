@@ -1,4 +1,5 @@
 package net.noiseinstitute.game.enemies {
+    import net.noiseinstitute.basecode.VectorMath;
 
     public class Grunt extends Enemy {
 
@@ -8,11 +9,19 @@ package net.noiseinstitute.game.enemies {
         private const FIRE_INTERVAL:uint = 5;
         private const VOLLEY_INTERVAL:uint = 50;
         private const VOLLEY_SIZE:int = 3;
+        private const SPEED:Number = 3;
 
         private var _shotsFired:int = 0;
 
         public function Grunt() {
             super(GRUNT);
+        }
+
+        override public function added():void {
+            x = 0;
+            y = 0;
+
+            VectorMath.becomePolar(_velocity, 225, SPEED);
         }
 
         override public function update():void {
