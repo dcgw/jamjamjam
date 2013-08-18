@@ -1,5 +1,6 @@
 package net.noiseinstitute.game {
     import net.flashpunk.World;
+    import net.noiseinstitute.game.enemies.Boss;
     import net.noiseinstitute.game.enemies.Dart;
     import net.noiseinstitute.game.enemies.Grunt;
     import net.noiseinstitute.game.enemies.Gunner;
@@ -31,6 +32,10 @@ package net.noiseinstitute.game {
                     .withEnemy(30, Gunner)
                     .withEnemy(60, Grunt, {left:true})
                     .withEnemy(60, Grunt, {left:false})
+            );
+
+            _waves.push(Wave.at(950)
+                    .withEnemy(0, Boss)
             );
 
             player = new Player;
