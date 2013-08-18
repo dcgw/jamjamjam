@@ -5,7 +5,7 @@ package net.noiseinstitute.game {
 
     public class Enemy extends Entity {
 
-        [Embed(source='enemy.png')]
+        [Embed(source='Enemy.png')]
         private const ENEMY:Class;
 
         private var _tick:uint = 0;
