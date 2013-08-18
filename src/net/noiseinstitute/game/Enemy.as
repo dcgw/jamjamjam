@@ -12,6 +12,7 @@ package net.noiseinstitute.game {
         private const ENEMY:Class;
 
         private const SPEED:Number = 3;
+        private const FIRE_INTERVAL:uint = 10;
 
         private var _tick:uint = 0;
         private var _img:Image;
@@ -22,6 +23,12 @@ package net.noiseinstitute.game {
             _img.centerOrigin();
             _img.smooth = true;
             graphic = _img;
+            layer = 100;
+        }
+
+        public function fire():void {
+            var shot:EnemyShot = FP.world.create(EnemyShot) as EnemyShot;
+            shot.fire(x, y, _velocity);
         }
 
         override public function added():void {
@@ -45,7 +52,11 @@ package net.noiseinstitute.game {
 
             _img.angle = VectorMath.angle(_velocity);
 
-            if(!onCamera) {
+            if (_tick % FIRE_INTERVAL == 0) {
+                fire();
+            }
+
+            if (!onCamera) {
                 FP.world.recycle(this);
             }
         }
