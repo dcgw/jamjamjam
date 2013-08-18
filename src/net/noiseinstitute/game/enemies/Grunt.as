@@ -37,7 +37,7 @@ package net.noiseinstitute.game.enemies {
             }
             if (_tick % FIRE_INTERVAL == 0 && _shotsFired < VOLLEY_SIZE) {
                 ++_shotsFired;
-                fire(_velocity);
+                fire(_velocity, SmallEnemyShot);
             }
         }
     }

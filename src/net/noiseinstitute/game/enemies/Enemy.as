@@ -22,8 +22,8 @@ package net.noiseinstitute.game.enemies {
 
         public function spawn(params:Object):void {}
 
-        public function fire(direction:Point):void {
-            var shot:EnemyShot = FP.world.create(EnemyShot) as EnemyShot;
+        public function fire(direction:Point, type:Class):void {
+            var shot:EnemyShot = FP.world.create(type) as EnemyShot;
             shot.fire(x, y, direction);
         }
 

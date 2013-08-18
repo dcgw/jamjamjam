@@ -1,5 +1,4 @@
 package net.noiseinstitute.game.enemies {
-    import net.noiseinstitute.game.*;
     import flash.geom.Point;
 
     import net.flashpunk.Entity;
@@ -9,26 +8,23 @@ package net.noiseinstitute.game.enemies {
 
     public class EnemyShot extends Entity {
 
-        [Embed(source='EnemyShot.png')]
-        private const ENEMY_SHOT:Class;
-
-        private const SPEED:Number = 7;
-
+        private var _speed:Number = 0;
         private var _velocity:Point = new Point(0, 0);
 
-        public function EnemyShot() {
-            var img:Image = new Image(ENEMY_SHOT);
+        public function EnemyShot(bitmap:Class, size:Number, speed:Number) {
+            var img:Image = new Image(bitmap);
             img.centerOrigin();
             graphic = img;
-            setHitbox(20, 20, 10, 10);
+            setHitbox(size, size, size/2, size/2);
             layer = 200;
+            _speed = speed;
         }
 
         public function fire(x:Number, y:Number, direction:Point):void {
             this.x = x;
             this.y = y;
             VectorMath.copyTo(_velocity, direction);
-            VectorMath.setMagnitudeInPlace(_velocity, SPEED);
+            VectorMath.setMagnitudeInPlace(_velocity, _speed);
         }
 
         override public function update():void {

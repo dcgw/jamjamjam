@@ -41,7 +41,7 @@ package net.noiseinstitute.game.enemies {
 
                 for(var i:int = 0; i <= 6; i++) {
                     VectorMath.rotateInPlace(_fireDirection, 60);
-                    fire(_fireDirection);
+                    fire(_fireDirection, LargeEnemyShot);
                 }
             }
         }
