@@ -73,9 +73,7 @@ package net.noiseinstitute.game {
 
         override public function update():void {
             ++tick;
-        }
 
-        override public function render(target:BitmapData, point:Point, camera:Point):void {
             for (var i:int = 0; i < NUM_STARS; ++i) {
                 var star:Star = stars[i];
                 star.y += MIN_SPEED + (1 - star.distance) * (MAX_SPEED - MIN_SPEED);
@@ -84,6 +82,12 @@ package net.noiseinstitute.game {
                     randomizeStar(star);
                     star.y -= (Main.HEIGHT + starBitmapData.height);
                 }
+            }
+        }
+
+        override public function render(target:BitmapData, point:Point, camera:Point):void {
+            for (var i:int = 0; i < NUM_STARS; ++i) {
+                var star:Star = stars[i];
 
                 colorTransform.redMultiplier = ((star.color >> 16) & 0xff) / 0xff;
                 colorTransform.greenMultiplier = ((star.color >> 8) & 0xff) / 0xff;
