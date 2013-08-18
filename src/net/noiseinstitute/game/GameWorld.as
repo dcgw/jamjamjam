@@ -7,6 +7,8 @@ package net.noiseinstitute.game {
         private var _waves:Vector.<Wave> = new Vector.<Wave>();
 
         public function GameWorld() {
+            addGraphic(new Starfield);
+
             _waves.push(Wave.at(50)
                     .withEnemy(0, Grunt)
                     .withEnemy(30, Grunt)
