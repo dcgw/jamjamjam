@@ -12,11 +12,14 @@ package net.noiseinstitute.game {
         private const ENEMY:Class;
 
         private const SPEED:Number = 3;
-        private const FIRE_INTERVAL:uint = 10;
+        private const FIRE_INTERVAL:uint = 5;
+        private const VOLLEY_INTERVAL:uint = 50;
+        private const VOLLEY_SIZE:int = 3;
 
         private var _tick:uint = 0;
         private var _img:Image;
         private var _velocity:Point = new Point(0, 0);
+        private var _shotsFired:int = 0;
 
         public function Enemy() {
             _img = new Image(ENEMY);
@@ -49,7 +52,11 @@ package net.noiseinstitute.game {
 
             _img.angle = VectorMath.angle(_velocity);
 
-            if (_tick % FIRE_INTERVAL == 0) {
+            if(_tick % VOLLEY_INTERVAL == 0) {
+                _shotsFired = 0;
+            }
+            if (_tick % FIRE_INTERVAL == 0 && _shotsFired < VOLLEY_SIZE) {
+                ++_shotsFired;
                 fire();
             }
 
