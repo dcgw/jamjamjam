@@ -1,10 +1,3 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Zutty
- * Date: 18/08/2013
- * Time: 18:28
- * To change this template use File | Settings | File Templates.
- */
 package net.noiseinstitute.game.enemies {
     import flash.geom.Point;
 
