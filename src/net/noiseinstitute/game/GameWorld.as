@@ -8,6 +8,8 @@ package net.noiseinstitute.game {
 
         private var _waves:Vector.<Wave> = new Vector.<Wave>();
 
+        private var player:Player;
+
         public function GameWorld() {
             addGraphic(new Starfield);
 
@@ -30,6 +32,11 @@ package net.noiseinstitute.game {
                     .withEnemy(60, Grunt, {left:true})
                     .withEnemy(60, Grunt, {left:false})
             );
+
+            player = new Player;
+            player.x = Main.WIDTH * 0.5;
+            player.y = Main.HEIGHT * 0.8;
+            add(player);
         }
 
         override public function update():void {
