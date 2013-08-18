@@ -19,13 +19,15 @@ package net.noiseinstitute.game.enemies {
 
         override public function added():void {
             x = 0;
-            y = 0;
+            y = 30;
 
-            VectorMath.becomePolar(_velocity, 225, SPEED);
+            VectorMath.becomePolar(_velocity, 200, SPEED);
         }
 
         override public function update():void {
             super.update();
+
+            VectorMath.rotateInPlace(_velocity, 0.2);
 
             if(_tick % VOLLEY_INTERVAL == 0) {
                 _shotsFired = 0;
