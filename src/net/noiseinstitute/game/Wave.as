@@ -4,15 +4,15 @@ package net.noiseinstitute.game {
     public class Wave {
 
         private var _tick:uint;
-        private var _startTick = 0;
+        private var _startTick:int = 0;
         private var _index:uint = 0;
         private var _enemies:Array = [];
 
-        function Wave(startTick) {
+        function Wave(startTick:int) {
             _startTick = startTick;
         }
 
-        public static function at(tick:uint) {
+        public static function at(tick:uint):Wave {
             return new Wave(tick);
         }
 
