@@ -9,6 +9,7 @@ package net.noiseinstitute.game {
     import flash.utils.getDefinitionByName;
 
     [SWF(width="640", height="480", frameRate="60", backgroundColor="000000")]
+    [Frame(factoryClass="net.noiseinstitute.game.Main")]
     public class Preloader extends Sprite {
         private static const MAIN_CLASS_NAME:String ="net.noiseinstitute.game.Main";
 
