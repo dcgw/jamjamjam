@@ -16,7 +16,7 @@ package net.noiseinstitute.game.enemies {
             img.centerOrigin();
             graphic = img;
             setHitbox(size, size, size/2, size/2);
-            layer = 200;
+            layer = 50;
             _speed = speed;
         }
 
