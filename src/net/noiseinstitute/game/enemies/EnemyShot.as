@@ -17,7 +17,7 @@ package net.noiseinstitute.game.enemies {
         private var _velocity:Point = new Point(0, 0);
 
         public function EnemyShot() {
-            var img = new Image(ENEMY_SHOT);
+            var img:Image = new Image(ENEMY_SHOT);
             img.centerOrigin();
             graphic = img;
             setHitbox(20, 20, 10, 10);
