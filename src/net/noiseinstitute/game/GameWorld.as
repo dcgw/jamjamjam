@@ -1,6 +1,7 @@
 package net.noiseinstitute.game {
     import net.flashpunk.World;
     import net.noiseinstitute.game.enemies.Grunt;
+    import net.noiseinstitute.game.enemies.Gunner;
 
     public class GameWorld extends World {
 
@@ -11,7 +12,7 @@ package net.noiseinstitute.game {
 
             _waves.push(Wave.at(50)
                     .withEnemy(0, Grunt)
-                    .withEnemy(30, Grunt)
+                    .withEnemy(30, Gunner)
                     .withEnemy(60, Grunt));
         }
 

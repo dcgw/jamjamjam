@@ -12,19 +12,19 @@ package net.noiseinstitute.game.enemies {
 
         protected var _tick:uint = 0;
         private var _img:Image;
-        private var _velocity:Point = new Point(0, 0);
+        protected var _velocity:Point = new Point(0, 0);
 
         public function Enemy(img:Class) {
             _img = new Image(img);
             _img.centerOrigin();
             _img.smooth = true;
             graphic = _img;
-            layer = 100;
+            layer = 101;
         }
 
-        public function fire():void {
+        public function fire(direction:Point):void {
             var shot:EnemyShot = FP.world.create(EnemyShot) as EnemyShot;
-            shot.fire(x, y, _velocity);
+            shot.fire(x, y, direction);
         }
 
         override public function added():void {
