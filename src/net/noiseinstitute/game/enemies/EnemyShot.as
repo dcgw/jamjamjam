@@ -1,4 +1,5 @@
-package net.noiseinstitute.game {
+package net.noiseinstitute.game.enemies {
+    import net.noiseinstitute.game.*;
     import flash.geom.Point;
 
     import net.flashpunk.Entity;

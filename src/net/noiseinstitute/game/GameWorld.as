@@ -1,5 +1,6 @@
 package net.noiseinstitute.game {
     import net.flashpunk.World;
+    import net.noiseinstitute.game.enemies.Enemy;
 
     public class GameWorld extends World {
 
