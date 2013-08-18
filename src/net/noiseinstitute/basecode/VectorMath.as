@@ -56,6 +56,12 @@ package net.noiseinstitute.basecode {
             return Math.sqrt(v.x*v.x + v.y*v.y);
         }
 
+        public static function setMagnitudeInPlace(v:Point, mag:Number) {
+            if (v.x != 0 || v.y != 0) {
+                scaleInPlace(v, mag / magnitude(v));
+            }
+        }
+
         public static function normalize(v:Point):Point {
             var m:Number = magnitude(v);
             if (m == 0) {
