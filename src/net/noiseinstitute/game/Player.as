@@ -14,6 +14,9 @@ package net.noiseinstitute.game {
         private static const ACCELERATION:Number = 6000 / Main.LOGIC_FPS / Main.LOGIC_FPS;
         private static const DRAG:Number = 4000 / Main.LOGIC_FPS / Main.LOGIC_FPS;
         private static const MAX_SPEED:Number = 500 / Main.LOGIC_FPS;
+        private static const MAX_SPEED_IN_FOCUS:Number = 200 / Main.LOGIC_FPS;
+
+        private static const FOCUS_HOLD_TICKS:int = 300 / Main.LOGIC_FPS;
 
         private static const MIN_SCALE:Number = 0.8;
         private static const MAX_SCALE:Number = 1;
@@ -25,6 +28,8 @@ package net.noiseinstitute.game {
 
         private var input:Point = new Point;
         private var velocity:Point = new Point;
+
+        private var fireHeldTicks:int = 0;
 
         public function Player() {
             image = new Image(PLAYER_IMAGE);
@@ -75,9 +80,22 @@ package net.noiseinstitute.game {
                 VectorMath.addTo(velocity, input);
             }
 
+            if (Input.check(Main.INPUT_FIRE)) {
+                ++fireHeldTicks;
+            } else {
+                fireHeldTicks = 0;
+            }
+
+            var maxSpeed:Number;
+            if (fireHeldTicks >= FOCUS_HOLD_TICKS) {
+                maxSpeed = MAX_SPEED_IN_FOCUS;
+            } else {
+                maxSpeed = MAX_SPEED;
+            }
+
             var speed:Number = VectorMath.magnitude(velocity);
-            if (speed > MAX_SPEED) {
-                VectorMath.scaleInPlace(velocity, MAX_SPEED / speed);
+            if (speed > maxSpeed) {
+                VectorMath.scaleInPlace(velocity, maxSpeed / speed);
             }
 
             x += velocity.x;
